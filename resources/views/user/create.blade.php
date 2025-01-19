@@ -81,7 +81,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary float-right">{{ isset($user) ? 'Update' : 'Submit' }}</button>
+                    <button type="submit" class="btn btn-primary float-right">{{ isset($user) ? 'Update' : 'Save' }}</button>
                 </form>
 
             </div>

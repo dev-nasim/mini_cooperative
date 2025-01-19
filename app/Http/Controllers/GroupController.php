@@ -28,11 +28,10 @@ class GroupController extends Controller
                 'coop_id' => 'required',
                 'code' => 'required|unique:groups,code',
             ]);
-            $CoopCode = Cooperative::where('id',$validatedData['coop_id'])->first();
             $group = new Group();
             $group->name = $validatedData['name'];
             $group->coop_id = $validatedData['coop_id'];
-            $group->code = $CoopCode->code.'-'.$validatedData['code'];
+            $group->code = $validatedData['code'];
             $group->status = 1;
             $group->save();
             return redirect()->route('group.index')->with('success', 'Data successfully inserted!');
@@ -62,12 +61,10 @@ class GroupController extends Controller
                 'coop_id' => 'required',
                 'code' => 'required|unique:groups,code,' . $id . ',id',
             ]);
-
-            $CoopCode = Cooperative::where('id',$validatedData['coop_id'])->first();
             $group = Group::findOrFail($id);
             $group->name = $validatedData['name'];
             $group->coop_id = $validatedData['coop_id'];
-            $group->code = $CoopCode->code.'-'.$validatedData['code'];
+            $group->code = $validatedData['code'];
             $group->save();
             return redirect()->route('group.index')->with('success', 'Data successfully updated!');
         } catch (\Exception $exception) {

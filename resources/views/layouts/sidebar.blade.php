@@ -58,7 +58,7 @@
             </a>
             <ul id="subUsers" class="side-nav-menu side-nav-menu-second-level mb-0">
                 <li class="side-nav-menu-item">
-                    <a class="side-nav-menu-link" href="#">Account</a>
+                    <a class="side-nav-menu-link" href="{{url('saving_accounts')}}">Account</a>
                 </li>
                 <li class="side-nav-menu-item">
                     <a class="side-nav-menu-link" href="#">Deposit</a>

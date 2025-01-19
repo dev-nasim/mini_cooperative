@@ -30,14 +30,14 @@
                         <nav class="d-none d-md-block" aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="#">Member</a>
+                                    <a href="#">Saving Accounts</a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">Member List</li>
+                                <li class="breadcrumb-item active" aria-current="page">List</li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-md-4 text-right">
-                        <a href="{{ route('member.create') }}" class="btn btn-primary">
+                        <a href="{{ route('saving_accounts.create') }}" class="btn btn-primary">
                             <i class="gd gd-plus"></i> Add New
                         </a>
                     </div>
@@ -48,12 +48,9 @@
                         <thead>
                         <tr>
                             <th class="font-weight-semi-bold border-top-0 py-2">#</th>
-                            <th class="font-weight-semi-bold border-top-0 py-2">Name</th>
-                            <th class="font-weight-semi-bold border-top-0 py-2">NID/Phone</th>
-                            <th class="font-weight-semi-bold border-top-0 py-2">Gender</th>
-                            <th class="font-weight-semi-bold border-top-0 py-2">Spouse</th>
-                            <th class="font-weight-semi-bold border-top-0 py-2">Cooperative</th>
-                            <th class="font-weight-semi-bold border-top-0 py-2">Group</th>
+                            <th class="font-weight-semi-bold border-top-0 py-2">Member Name</th>
+                            <th class="font-weight-semi-bold border-top-0 py-2">Saving Code</th>
+                            <th class="font-weight-semi-bold border-top-0 py-2">Opening Date</th>
                             <th class="font-weight-semi-bold border-top-0 py-2">Status</th>
                             <th class="font-weight-semi-bold border-top-0 py-2">Actions</th>
                         </tr>
@@ -62,14 +59,11 @@
                         @foreach ($data as $index => $d)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $d['name'] }} [{{ $d['m_code'] }}]</td>
-                                <td>{{ $d['m_nid']}} / {{$d['m_phone'] }}</td>
-                                <td>{{ $d['gender'] == 1 ? 'Male' : 'Female' }}</td>
-                                <td>{{ $d['spouse_name'] }} ({{ $d['spouse_relation'] }})</td>
-                                <td>{{ $d['cooperative']['name'] ?? 'N/A' }}</td>
-                                <td>{{ $d['group']['name'] ?? 'N/A' }}</td>
+                                <td>{{ $d->member_name }}[{{$d->member_code}}]</td>
+                                <td>{{ $d->saving_code }}</td>
+                                <td>{{ \Carbon\Carbon::parse($d->created_at)->format('Y-m-d') }}</td>
                                 <td>
-                                    @if($d['status'] == 1)
+                                    @if($d->status == 1)
                                         <span class="badge badge-pill badge-success">Active</span>
                                     @else
                                         <span class="badge badge-pill badge-warning">Inactive</span>
@@ -77,11 +71,9 @@
                                 </td>
                                 <td class="py-3">
                                     <div class="position-relative">
-                                        <a href="{{ route('member.edit', $d['id']) }}" class="link-dark d-inline-block" title="Edit User">
-                                            <i class="gd-pencil icon-text"></i>
-                                        </a>
+                                        <a href="{{ route('saving_accounts.edit', $d->id) }}" class="link-dark d-inline-block" title="Edit User"><i class="gd-pencil icon-text"></i></a>
 
-                                        <form action="{{ route('member.destroy', $d['id']) }}" method="POST" style="display: inline;" class="delete-form">
+                                        <form action="{{ route('saving_accounts.destroy', $d->id) }}" method="POST" style="display: inline;" class="delete-form">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="link-dark d-inline-block" style="background: none; border: none; color: inherit; cursor: pointer;" title="Delete User">
@@ -94,7 +86,6 @@
                         @endforeach
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>

@@ -5,6 +5,7 @@ use App\Http\Controllers\CooperativeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\SavingAccountController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/member', MemberController::class);
     Route::get('/get-group-details/{group_id}', [MemberController::class, 'getGroupDetails']);
     Route::get('/get-groups-by-cooperative/{coop_id}', [MemberController::class, 'getGroupsByCooperative']);
-
+    Route::resource('/saving_accounts', SavingAccountController::class);
+    Route::get('/get-member-details/{memberId}', [SavingAccountController::class, 'getMemberDetails']);
 
 });

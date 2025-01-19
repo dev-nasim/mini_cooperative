@@ -120,13 +120,15 @@ class MemberController extends Controller
             $lastMember = Member::where('group_id', $group->id)->latest()->first();
             $serial = $lastMember ? $lastMember->m_code : 0;
             $nextSerial = (int) substr($serial, strpos($serial, '-') + 1) + 1;
+            $formattedSerial = str_pad($nextSerial, 3, '0', STR_PAD_LEFT);
             return response()->json([
                 'group_code' => $group->code,
-                'next_serial' => $nextSerial
+                'next_serial' => $formattedSerial
             ]);
         }
         return response()->json(['error' => 'Group not found'], 404);
     }
+
 
 
 }

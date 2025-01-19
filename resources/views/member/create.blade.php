@@ -147,7 +147,7 @@
                         </div>
 
                     </div>
-                    <button type="submit" class="btn btn-primary float-right">{{ isset($data) ? 'Update' : 'Submit' }}</button>
+                    <button type="submit" class="btn btn-primary float-right">{{ isset($data) ? 'Update' : 'Save' }}</button>
                 </form>
             </div>
         </div>
@@ -159,13 +159,11 @@
             const groupSelect = document.getElementById('group_id');
             const memberCodeInput = document.getElementById('m_code');
 
-            // Fetch groups based on selected cooperative
             coopSelect.addEventListener('change', function() {
                 const coopId = this.value;
                 if (coopId) {
                     fetch(`/get-groups-by-cooperative/${coopId}`)
-                        .then(response => response.json())
-                        .then(data => {
+                        .then(response => response.json()).then(data => {
                             groupSelect.innerHTML = '<option value="">Select a Group</option>';
                             data.forEach(group => {
                                 const option = document.createElement('option');
