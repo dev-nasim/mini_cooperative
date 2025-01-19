@@ -8,11 +8,18 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = User::get();
+        $search = $request->get('search');
+        $data = User::when($search, function ($query, $search) {
+            return $query->where('name', 'like', "%{$search}%")
+                ->orWhere('phone', 'like', "%{$search}%")
+                ->orWhere('email', 'like', "%{$search}%");
+        })->get();
+
         return view('user.index', compact('data'));
     }
+
 
     public function create()
     {

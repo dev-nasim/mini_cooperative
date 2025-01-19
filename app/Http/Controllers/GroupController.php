@@ -8,11 +8,18 @@ use Illuminate\Http\Request;
 
 class GroupController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = Group::with('cooperative:id,name')->get();
+        $search = $request->input('search');
+
+        $data = Group::with('cooperative:id,name')
+            ->when($search, function ($query, $search) {
+                return $query->where('name', 'like', '%' . $search . '%');
+            })->get();
+
         return view('group.index', compact('data'));
     }
+
 
     public function create()
     {

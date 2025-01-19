@@ -9,11 +9,23 @@ use Illuminate\Http\Request;
 
 class MemberController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = Member::with('cooperative:id,name','group:id,name')->get();
-        return view('member.index',compact('data'));
+        $search = $request->input('search');
+        $data = Member::with('cooperative:id,name', 'group:id,name')
+            ->when($search, function ($query, $search) {
+                return $query->where(function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('m_phone', 'like', '%' . $search . '%')
+                        ->orWhere('m_nid', 'like', '%' . $search . '%')
+                        ->orWhere('m_code', 'like', '%' . $search . '%');
+                });
+            })
+            ->get();
+
+        return view('member.index', compact('data'));
     }
+
 
     public function create()
     {

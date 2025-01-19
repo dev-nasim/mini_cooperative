@@ -8,13 +8,23 @@ use Illuminate\Http\Request;
 
 class SavingAccountController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->input('search');
+
         $data = SavingsAccount::leftJoin('members', 'savings_accounts.member_id', '=', 'members.id')
-            ->selectRaw("savings_accounts.*,members.name as member_name,members.m_code as member_code")
-            ->get();
-        return view('savingAccounts.index',compact('data'));
+            ->selectRaw("savings_accounts.*, members.name as member_name, members.m_code as member_code, savings_accounts.saving_code")
+            ->when($search, function ($query, $search) {
+                return $query->where(function ($query) use ($search) {
+                    $query->where('members.name', 'like', '%' . $search . '%')
+                        ->orWhere('members.m_code', 'like', '%' . $search . '%')
+                        ->orWhere('savings_accounts.saving_code', 'like', '%' . $search . '%');
+                });
+            })->get();
+
+        return view('savingAccounts.index', compact('data'));
     }
+
 
     public function create()
     {

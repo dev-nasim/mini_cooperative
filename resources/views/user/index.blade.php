@@ -43,6 +43,19 @@
                     </div>
                 </div>
 
+                <form method="GET" action="{{ route('user.index') }}" class="mb-3">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <input type="text" name="search" class="form-control" placeholder="Search by name, phone, or email" value="{{ request('search') }}">
+                        </div>
+                        <div class="col-md-1">
+                            <button type="submit" class="btn btn-primary w-100">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
                 <div class="table-responsive-xl">
                     <table class="table text-nowrap mb-0 table-bordered">
                         <thead>

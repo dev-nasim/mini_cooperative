@@ -8,11 +8,16 @@ use Illuminate\Http\Request;
 class CooperativeController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $data = Cooperative::get();
+        $search = $request->get('search');
+        $data = Cooperative::when($search, function ($query, $search) {
+            return $query->where('name', 'like', "%{$search}%");
+        })->get();
+
         return view('cooperative.index', compact('data'));
     }
+
 
     public function create()
     {
