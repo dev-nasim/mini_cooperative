@@ -5,7 +5,9 @@ use App\Http\Controllers\CooperativeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SavingAccountController;
+use App\Http\Controllers\SavingDepositController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +24,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/get-group-details/{group_id}', [MemberController::class, 'getGroupDetails']);
     Route::get('/get-groups-by-cooperative/{coop_id}', [MemberController::class, 'getGroupsByCooperative']);
     Route::resource('/saving_accounts', SavingAccountController::class);
+    Route::resource('/deposit', SavingDepositController::class);
     Route::get('/get-member-details/{memberId}', [SavingAccountController::class, 'getMemberDetails']);
+    Route::get('/get_transactions/{savingsAccountId}', [SavingDepositController::class, 'getTransactions']);
+    Route::get('/deposit_reports', [ReportsController::class, 'depositReport']);
+
 
 });

@@ -21,6 +21,7 @@ class MemberController extends Controller
                         ->orWhere('m_code', 'like', '%' . $search . '%');
                 });
             })
+            ->orderBy('id','desc')
             ->get();
 
         return view('member.index', compact('data'));

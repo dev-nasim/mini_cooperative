@@ -13,7 +13,7 @@ class CooperativeController extends Controller
         $search = $request->get('search');
         $data = Cooperative::when($search, function ($query, $search) {
             return $query->where('name', 'like', "%{$search}%");
-        })->get();
+        })->orderBy('id','desc')->get();
 
         return view('cooperative.index', compact('data'));
     }

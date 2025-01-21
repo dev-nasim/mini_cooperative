@@ -61,18 +61,27 @@
                     <a class="side-nav-menu-link" href="{{url('saving_accounts')}}">Account</a>
                 </li>
                 <li class="side-nav-menu-item">
-                    <a class="side-nav-menu-link" href="#">Deposit</a>
+                    <a class="side-nav-menu-link" href="{{url('deposit')}}">Deposit</a>
                 </li>
             </ul>
         </li>
 
         <li class="side-nav-menu-item active">
-            <a class="side-nav-menu-link media align-items-center" href="/">
+            <a class="side-nav-menu-link media align-items-center" href="{{ url('deposit_reports') }}">
                 <span class="side-nav-menu-icon d-flex mr-3">
-                    <img src="{{ asset('img/money.png') }}" style="width: 22px">
+                    <img src="{{ asset('img/report.png') }}" style="width: 22px">
                 </span>
-                <span class="side-nav-fadeout-on-closed media-body">Withdraw</span>
+                <span class="side-nav-fadeout-on-closed media-body">Report</span>
             </a>
         </li>
+
+{{--        <li class="side-nav-menu-item active">--}}
+{{--            <a class="side-nav-menu-link media align-items-center" href="/">--}}
+{{--                <span class="side-nav-menu-icon d-flex mr-3">--}}
+{{--                    <img src="{{ asset('img/money.png') }}" style="width: 22px">--}}
+{{--                </span>--}}
+{{--                <span class="side-nav-fadeout-on-closed media-body">Withdraw</span>--}}
+{{--            </a>--}}
+{{--        </li>--}}
     </ul>
 </aside>

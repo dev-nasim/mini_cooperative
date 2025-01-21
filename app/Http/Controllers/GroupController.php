@@ -15,7 +15,7 @@ class GroupController extends Controller
         $data = Group::with('cooperative:id,name')
             ->when($search, function ($query, $search) {
                 return $query->where('name', 'like', '%' . $search . '%');
-            })->get();
+            })->orderBy('id','desc')->get();
 
         return view('group.index', compact('data'));
     }

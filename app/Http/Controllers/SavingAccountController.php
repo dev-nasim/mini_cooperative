@@ -20,7 +20,7 @@ class SavingAccountController extends Controller
                         ->orWhere('members.m_code', 'like', '%' . $search . '%')
                         ->orWhere('savings_accounts.saving_code', 'like', '%' . $search . '%');
                 });
-            })->get();
+            })->orderBy('id','desc')->get();
 
         return view('savingAccounts.index', compact('data'));
     }

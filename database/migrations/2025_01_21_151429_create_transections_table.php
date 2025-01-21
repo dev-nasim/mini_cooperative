@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('saving_deposits', function (Blueprint $table) {
+        Schema::create('transections', function (Blueprint $table) {
             $table->id();
             $table->integer('member_id');
             $table->integer('group_id');
             $table->integer('coop_id');
             $table->integer('s_account_id');
+            $table->integer('type')->comment('1=deposit,2=withdraw');
             $table->date('deposit_date');
             $table->string('amount');
             $table->timestamps();
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('saving_deposits');
+        Schema::dropIfExists('transections');
     }
 };
