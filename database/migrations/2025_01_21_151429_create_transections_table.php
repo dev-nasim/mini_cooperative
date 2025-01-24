@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('coop_id');
             $table->integer('s_account_id');
             $table->integer('type')->comment('1=deposit,2=withdraw');
-            $table->date('deposit_date');
+            $table->date('transaction_date');
             $table->string('amount');
             $table->timestamps();
         });

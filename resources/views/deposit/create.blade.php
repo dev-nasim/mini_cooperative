@@ -60,9 +60,9 @@
                         </div>
 
                         <div class="form-group col-12 col-md-4">
-                            <label for="deposit_date">Date</label>
-                            <input type="date" class="form-control" id="deposit_date" name="deposit_date" value="{{ old('deposit_date') }}" required>
-                            @error('deposit_date')
+                            <label for="transaction_date">Date</label>
+                            <input type="date" class="form-control" id="transaction_date" name="transaction_date" value="{{ old('transaction_date') }}" required>
+                            @error('transaction_date')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                             @enderror
                         </div>

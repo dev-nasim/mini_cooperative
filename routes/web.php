@@ -8,6 +8,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SavingAccountController;
 use App\Http\Controllers\SavingDepositController;
+use App\Http\Controllers\SavingWithdrawController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/get-member-details/{memberId}', [SavingAccountController::class, 'getMemberDetails']);
     Route::get('/get_transactions/{savingsAccountId}', [SavingDepositController::class, 'getTransactions']);
     Route::get('/deposit_reports', [ReportsController::class, 'depositReport']);
+    Route::resource('/withdraw',SavingWithdrawController::class);
+    Route::get('/get_saving_account/{memberId}', [SavingWithdrawController::class, 'getSavingAccount']);
+    Route::get('/get_account_details/{accountId}', [SavingWithdrawController::class, 'getAccountDetails']);
 
 
 });

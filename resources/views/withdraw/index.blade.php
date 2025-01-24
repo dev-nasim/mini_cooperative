@@ -30,19 +30,19 @@
                         <nav class="d-none d-md-block" aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="#">Deposit List</a>
+                                    <a href="#">Withdraw List</a>
                                 </li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-md-4 text-right">
-                        <a href="{{ route('deposit.create') }}" class="btn btn-primary">
+                        <a href="{{ route('withdraw.create') }}" class="btn btn-primary">
                             <i class="gd gd-plus"></i> Add New
                         </a>
                     </div>
                 </div>
 
-                <form method="GET" action="{{ route('deposit.index') }}" class="mb-3">
+                <form method="GET" action="{{ route('withdraw.index') }}" class="mb-3">
                     <div class="row">
                         <div class="col-md-3">
                             <input type="text" name="search" class="form-control" placeholder="Search by name" value="{{ request('search') }}">
@@ -61,7 +61,7 @@
                         <tr>
                             <th class="font-weight-semi-bold border-top-0 py-2">#</th>
                             <th class="font-weight-semi-bold border-top-0 py-2">Member</th>
-                            <th class="font-weight-semi-bold border-top-0 py-2">Deposit Date</th>
+                            <th class="font-weight-semi-bold border-top-0 py-2">Withdraw Date</th>
                             <th class="font-weight-semi-bold border-top-0 py-2">Saving Code</th>
                             <th class="font-weight-semi-bold border-top-0 py-2">Cooperative</th>
                             <th class="font-weight-semi-bold border-top-0 py-2">Groups</th>
@@ -81,7 +81,7 @@
                                 <td>{{ $d->amount }}</td>
                                 <td class="py-3">
                                     <div class="position-relative">
-                                        <form action="{{ route('deposit.destroy', $d->id) }}" method="POST" style="display: inline;" class="delete-form">
+                                        <form action="{{ route('withdraw.destroy', $d->id) }}" method="POST" style="display: inline;" class="delete-form">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="link-dark d-inline-block" style="background: none; border: none; color: inherit; cursor: pointer;" title="Delete User">
