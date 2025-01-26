@@ -21,11 +21,12 @@ class MemberController extends Controller
                         ->orWhere('m_code', 'like', '%' . $search . '%');
                 });
             })
-            ->orderBy('id','desc')
-            ->get();
+            ->orderBy('id', 'desc')
+            ->paginate(10);  // Change from get() to paginate(10)
 
         return view('member.index', compact('data'));
     }
+
 
 
     public function create()
@@ -43,7 +44,8 @@ class MemberController extends Controller
                 'm_phone' => 'required',
                 'address' => 'required|string|max:500',
                 'group_id' => 'required',
-                'coop_id' => 'required'
+                'coop_id' => 'required',
+                'm_code' => 'required|unique:members,m_code|max:255',
             ]);
             $data = new Member();
             $data->name = $validatedData['name'];
@@ -51,7 +53,7 @@ class MemberController extends Controller
             $data->address = $validatedData['address'];
             $data->group_id = $validatedData['group_id'];
             $data->coop_id = $validatedData['coop_id'];
-            $data->m_code = $request->m_code;
+            $data->m_code = $validatedData['m_code'];
             $data->m_nid = $request->m_nid;
             $data->spouse_relation = $request->spouse_relation;
             $data->spouse_name = $request->spouse_name;
@@ -86,7 +88,8 @@ class MemberController extends Controller
                 'm_phone' => 'required',
                 'address' => 'required|string|max:500',
                 'group_id' => 'required',
-                'coop_id' => 'required'
+                'coop_id' => 'required',
+                'm_code' => 'required|unique:members,m_code|max:255',
             ]);
 
             $data = Member::findOrFail($id);
@@ -95,7 +98,7 @@ class MemberController extends Controller
             $data->address = $validatedData['address'];
             $data->group_id = $validatedData['group_id'];
             $data->coop_id = $validatedData['coop_id'];
-            $data->m_code = $request->m_code;
+            $data->m_code = $validatedData['m_code'];
             $data->m_nid = $request->m_nid;
             $data->spouse_relation = $request->spouse_relation;
             $data->spouse_name = $request->spouse_name;

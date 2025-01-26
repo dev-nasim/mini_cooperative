@@ -17,4 +17,8 @@ class Member extends Model
     {
         return $this->belongsTo(Group::class, 'group_id', 'id');
     }
+    public function transactions()
+    {
+        return $this->hasMany(Transection::class, 'member_id');
+    }
 }

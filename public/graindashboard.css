@@ -12354,6 +12354,9 @@ a.bg-danger:focus, a.bg-danger:hover, button.bg-danger:focus, button.bg-danger:h
 .bg-light {
     background-color: #cdced6 !important
 }
+.bg-custom {
+    background-color: rgb(205 206 214 / 71%) !important
+}
 
 a.bg-light:focus, a.bg-light:hover, button.bg-light:focus, button.bg-light:hover {
     background-color: #b1b3bf !important

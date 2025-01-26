@@ -102,6 +102,47 @@
                         </tbody>
                     </table>
                 </div>
+
+                <div class="card-footer d-block d-md-flex align-items-center d-print-none">
+                    <div class="d-flex mb-2 mb-md-0">
+                        Showing {{ $data->firstItem() }} to {{ $data->lastItem() }} of {{ $data->total() }} Entries
+                    </div>
+
+                    <nav class="d-flex ml-md-auto d-print-none" aria-label="Pagination">
+                        <ul class="pagination justify-content-center font-weight-semi-bold mb-0">
+                            <!-- Previous Page Link -->
+                            @if($data->onFirstPage())
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <i class="gd-angle-left icon-text icon-text-xs d-inline-block"></i>
+                                    </a>
+                                </li>
+                            @else
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $data->previousPageUrl() }}" aria-label="Previous">
+                                        <i class="gd-angle-left icon-text icon-text-xs d-inline-block"></i>
+                                    </a>
+                                </li>
+                            @endif
+
+                            <!-- Next Page Link -->
+                            @if($data->hasMorePages())
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $data->nextPageUrl() }}" aria-label="Next">
+                                        <i class="gd-angle-right icon-text icon-text-xs d-inline-block"></i>
+                                    </a>
+                                </li>
+                            @else
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <i class="gd-angle-right icon-text icon-text-xs d-inline-block"></i>
+                                    </a>
+                                </li>
+                            @endif
+                        </ul>
+                    </nav>
+                </div>
+
             </div>
         </div>
     </div>

@@ -30,7 +30,7 @@
         <li class="side-nav-menu-item active">
             <a class="side-nav-menu-link media align-items-center" href="{{url('group')}}">
                 <span class="side-nav-menu-icon d-flex mr-3">
-                    <img src="{{ asset('img/puzzle.png') }}" style="width: 22px">
+                    <img src="{{ asset('img/acquisition.png') }}" style="width: 22px">
                 </span>
                 <span class="side-nav-fadeout-on-closed media-body">Group</span>
             </a>

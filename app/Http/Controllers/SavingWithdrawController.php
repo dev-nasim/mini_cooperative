@@ -27,7 +27,7 @@ class SavingWithdrawController extends Controller
                 });
             })
             ->orderBy('id','desc')
-            ->get();
+            ->paginate(10);
         return view('withdraw.index', compact('data'));
     }
 

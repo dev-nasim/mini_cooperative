@@ -7,49 +7,27 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6 col-xl-4 mb-3 mb-xl-4">
-                <!-- Widget -->
-                <div class="card flex-row align-items-center p-3 p-md-4">
-                    <div class="icon icon-lg bg-soft-primary rounded-circle mr-3">
-                        <i class="gd-bar-chart icon-text d-inline-block text-primary"></i>
-                    </div>
-                    <div>
-                        <h4 class="lh-1 mb-1">75%</h4>
-                        <h6 class="mb-0">Conversion Rate</h6>
-                    </div>
-                    <i class="gd-arrow-up icon-text d-flex text-success ml-auto"></i>
+            <div class="col-md-6 col-xl-6 mb-3 mb-xl-6">
+                <div class="table-responsive-xl">
+                    <table class="table text-nowrap mb-0 table-bordered">
+                        <thead class="bg-light">
+                        <tr>
+                            <th class="font-weight-semi-bold border-top-0 py-2">Cooperative Name</th>
+                            <th class="font-weight-semi-bold border-top-0 py-2">Total Withdraw</th>
+                            <th class="font-weight-semi-bold border-top-0 py-2">Total Saving</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($cooperativeData as $coop)
+                            <tr>
+                                <td class="py-3">COOP-{{ $coop->coop_id }}</td>
+                                <td class="align-middle py-3">{{ number_format($coop->total_withdraw, 2) }}</td>
+                                <td class="py-3">{{ number_format($coop->total_saving, 2) }}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
-                <!-- End Widget -->
-            </div>
-
-            <div class="col-md-6 col-xl-4 mb-3 mb-xl-4">
-                <!-- Widget -->
-                <div class="card flex-row align-items-center p-3 p-md-4">
-                    <div class="icon icon-lg bg-soft-secondary rounded-circle mr-3">
-                        <i class="gd-wallet icon-text d-inline-block text-secondary"></i>
-                    </div>
-                    <div>
-                        <h4 class="lh-1 mb-1">$18,000.00</h4>
-                        <h6 class="mb-0">Total Sales</h6>
-                    </div>
-                    <i class="gd-arrow-down icon-text d-flex text-danger ml-auto"></i>
-                </div>
-                <!-- End Widget -->
-            </div>
-
-            <div class="col-md-6 col-xl-4 mb-3 mb-xl-4">
-                <!-- Widget -->
-                <div class="card flex-row align-items-center p-3 p-md-4">
-                    <div class="icon icon-lg bg-soft-warning rounded-circle mr-3">
-                        <i class="gd-money icon-text d-inline-block text-warning"></i>
-                    </div>
-                    <div>
-                        <h4 class="lh-1 mb-1">$10,000.00</h4>
-                        <h6 class="mb-0">Net Revenue</h6>
-                    </div>
-                    <i class="gd-arrow-up icon-text d-flex text-success ml-auto"></i>
-                </div>
-                <!-- End Widget -->
             </div>
         </div>
     </div>

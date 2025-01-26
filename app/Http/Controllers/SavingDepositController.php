@@ -27,7 +27,7 @@ class SavingDepositController extends Controller
                 });
             })
             ->orderBy('id','desc')
-            ->get();
+            ->paginate(10);
         return view('deposit.index', compact('data'));
     }
 
