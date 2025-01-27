@@ -1,19 +1,20 @@
 <header class="header bg-body">
     <nav class="navbar flex-nowrap p-0">
-        <div class="navbar-brand-wrapper d-flex align-items-center col-auto">
+        <div class="navbar-brand-wrapper d-flex justify-content-center align-items-center col-auto">
             <!-- Logo For Mobile View -->
             <a class="navbar-brand navbar-brand-mobile" href="/">
-                <img class="img-fluid w-100" src="{{ asset('img/logo-mini.png') }}" alt="Graindashboard">
+                <img class="img-fluid w-100" src="{{ asset('img/system_logo.jpg') }}" alt="Graindashboard">
             </a>
             <!-- End Logo For Mobile View -->
 
             <!-- Logo For Desktop View -->
             <a class="navbar-brand navbar-brand-desktop" href="/">
-                <img class="side-nav-show-on-closed" src="{{ asset('img/logo-mini.png') }}" alt="Graindashboard" style="width: auto; height: 33px;">
-                <img class="side-nav-hide-on-closed" src="{{ asset('img/logo.png') }}" alt="Graindashboard" style="width: auto; height: 33px;">
+                <img class="side-nav-show-on-closed" src="{{ asset('img/system_logo.jpg') }}" alt="Graindashboard" style="width: auto; height: 65px;">
+                <img class="side-nav-hide-on-closed" src="{{ asset('img/system_logo.jpg') }}" alt="Graindashboard" style="width: auto; height: 65px;">
             </a>
             <!-- End Logo For Desktop View -->
         </div>
+
 
         <div class="header-content col px-md-3">
             <div class="d-flex align-items-center">

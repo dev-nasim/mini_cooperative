@@ -18,13 +18,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($cooperativeData as $coop)
-                            <tr>
-                                <td class="py-3">COOP-{{ $coop->coop_id }}</td>
-                                <td class="align-middle py-3">{{ number_format($coop->total_withdraw, 2) }}</td>
-                                <td class="py-3">{{ number_format($coop->total_saving, 2) }}</td>
-                            </tr>
-                        @endforeach
+{{--                        @foreach ($cooperativeData as $coop)--}}
+{{--                            <tr>--}}
+{{--                                <td class="py-3">COOP-{{ $coop->coop_id }}</td>--}}
+{{--                                <td class="align-middle py-3">{{ number_format($coop->total_withdraw, 2) }}</td>--}}
+{{--                                <td class="py-3">{{ number_format($coop->total_saving, 2) }}</td>--}}
+{{--                            </tr>--}}
+{{--                        @endforeach--}}
                         </tbody>
                     </table>
                 </div>
